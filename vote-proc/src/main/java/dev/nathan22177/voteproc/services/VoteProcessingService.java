@@ -57,7 +57,7 @@ public class VoteProcessingService {
            }
            if (voting.getStatus().isFinalStatus()) {
                votingMap.computeIfAbsent(votingId + 1, k -> new Voting(votingId + 1));
-               log.warn("Voting has ended. Will now try to notify generator server. votingId: {}",
+               log.info("Voting has ended. Will now try to notify generator server. votingId: {}",
                        vote.getVotingId());
                voteGeneratorNotifier.notifyGeneratorAboutEndedVote(voting.conclude());
            }
